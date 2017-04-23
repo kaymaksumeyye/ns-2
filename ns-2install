@@ -1,0 +1,41 @@
+#!/bin/bash
+cd 
+wget http://downloads.sourceforge.net/project/nsnam/allinone/ns-allinone-2.35/ns-allinone-2.35.tar.gz
+tar -xvf ns-allinone-2.35.tar.gz
+sudo apt-get install build-essential autoconf automake libxmu-dev
+sudo apt-get install gcc-4.4
+cd ns-allinone-2.35
+dosya_adi="ns-2.35/linkstate/ls.h"
+sed -i "137d" $dosya_adi
+sed -i '137s;^;\tvoid eraseAll() { this->erase(baseMap::begin(), baseMap::end())\; }\n;' $dosya_adi
+################
+## edit line 137
+## erase to this—>erase
+dosya_adi="otcl-1.14/Makefile.in"
+sed -i "7d" $dosya_adi
+sed -i '7s;^;CC=		gcc-4.4\n;' $dosya_adi
+./install
+
+OTCLLIB_=~/ns-allinone-2.35/otcl-1.14
+NS2_=~/ns-allinone-2.35/lib
+TCLIB_=~/ns-allinone-2.35/tk8.5.10/library
+XGRAPH_=~/ns-allinone-2.35/bin:/home/akshay/ns-allinone-2.35/tcl8.5.10/unix:/home/akshay/ns-allinone-2.35/tk8.5.10/unix
+NS_=~/ns-allinone-2.35/ns-2.35/
+NAM_=~/ns-allinone-2.35/nam-1.15/
+
+printf "\n# LD_LIBRARY_PATH
+OTCL_LIB=$OTCLLIB_
+NS2_LIB=$NS2_ 
+X11_LIB=/usr/X11R6/lib
+USR_LOCAL_LIB=/usr/local/lib
+export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$OTCL_LIB:\$NS2_LIB:\$X11_LIB:\$USR_LOCAL_LIB
+# TCL_LIBRARY
+TCL_LIB=$TCLIB_
+USR_LIB=/usr/lib
+export TCL_LIBRARY=\$TCL_LIB:\$USR_LIB
+# PATH
+XGRAPH=$XGRAPH_
+#the above two lines beginning from xgraph and ending with unix should come on the same line
+NS=$NS_
+NAM=$NAM_
+PATH=\$PATH:\$XGRAPH:\$NS:\$NAM\n" >> ~/.bashrc
