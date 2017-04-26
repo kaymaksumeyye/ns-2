@@ -12,7 +12,7 @@ $recvPacketCount = 0;
 $totalDelay = 0;
 $avgDelay = 0;
 
-open (AVGDELAY, ">>/home/sumeyye/avgDelay_$openFile.txt");
+open (AVGDELAY, ">>avgDelay_$openFile.txt");
 
 while(<Trace>)
 {
