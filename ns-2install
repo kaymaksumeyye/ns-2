@@ -23,7 +23,7 @@ sed -i '7s;^;CC=		gcc-4.4\n;' $dosya_adi
 OTCLLIB_=~/ns-allinone-2.35/otcl-1.14
 NS2_=~/ns-allinone-2.35/lib
 TCLIB_=~/ns-allinone-2.35/tk8.5.10/library
-XGRAPH_=~/ns-allinone-2.35/bin:/home/akshay/ns-allinone-2.35/tcl8.5.10/unix:/home/akshay/ns-allinone-2.35/tk8.5.10/unix
+XGRAPH_=~/ns-allinone-2.35/bin:/home/ns-allinone-2.35/tcl8.5.10/unix:/home/ns-allinone-2.35/tk8.5.10/unix
 NS_=~/ns-allinone-2.35/ns-2.35/
 NAM_=~/ns-allinone-2.35/nam-1.15/
 
