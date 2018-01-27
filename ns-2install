@@ -1,6 +1,6 @@
 #!/bin/bash
 cd 
 wget https://drive.google.com/file/d/1DIAQQeAA0A6CK8fc6KTgKpXyuKcxM6mx/view
-tar -xvf ns-allinone-2.35.tar.gz
+tar -xvf ns-allinone-2.35_gcc482.tar.gz
 cd ns-allinone-2.35
 ./install
